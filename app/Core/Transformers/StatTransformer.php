@@ -3,6 +3,7 @@
 namespace App\Core\Transformers;
 
 use League\Fractal\TransformerAbstract;
+use App\Core\Models\Roster;
 
 class StatTransformer extends TransformerAbstract
 {
@@ -32,17 +33,9 @@ class StatTransformer extends TransformerAbstract
      * @param Build $model
      * @return array
      */
-    public function transform(User $model)
+    public function transform(Roster $data)
     {
-      return [
-        'id' => $model->id,
-        'email' => $model->email,
-        'name' => $model->name,
-        'slug' => $model->slug,
-        'avatar' => $model->avatar_image,
-        'status'  => $model->status,
-        'about' => $model->about,
-      ];
+      return $data->toArray();
     }
 
 }
